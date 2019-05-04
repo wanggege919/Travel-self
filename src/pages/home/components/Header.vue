@@ -22,20 +22,21 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+@import '~styles/varibles.styl'
     .header 
         height .56rem
-        background #00bcd4
+        background $bgColor
         display flex
         align-items center
         justify-content center
         .header-input
-            height .38rem
-            width 3.28rem
+            height .4rem
+            flex-grow 1
             border-radius .05rem
             background #fff
             padding-left .1rem
             .header-input-content
-                line-height .38rem
+                line-height .4rem
                 color #ddd
         .header-left
             width .5rem
@@ -44,7 +45,7 @@ export default {
             .back-icon
                 font-size .3rem
         .header-right
-            width .78rem
+            width .88rem
             text-align center
             color #fff 
             .arrow-icon
