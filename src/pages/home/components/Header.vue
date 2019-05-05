@@ -9,11 +9,12 @@
                 输入城市/景点/游玩主题
             </div>
         </div>
-        <div class="header-right">
-            <span>{{city}}</span>
-            <span class="iconfont arrow-icon">&#xe6aa;</span>
-            
-        </div>
+        <router-link to="/city">
+            <div class="header-right">           
+                <span class="city">{{city}}</span>
+                <span class="iconfont arrow-icon">&#xe6aa;</span>             
+            </div>
+        </router-link>  
     </div>
 </template>
 <script>
@@ -49,5 +50,6 @@ export default {
             text-align center
             color #fff 
             .arrow-icon
-                margin-left -.06rem    
+                margin-left -.06rem  
+                
 </style>
