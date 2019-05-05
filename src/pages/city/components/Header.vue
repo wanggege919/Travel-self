@@ -15,6 +15,7 @@
 </template>
 <script>
 export default {
+    name: "CityHeader",
     
 }
 </script>
@@ -35,7 +36,7 @@ export default {
             font-size .3rem
             color #fff
     .header-input
-        height .56rem
+        height .46rem
         background $bgColor
         display flex
         align-items center
@@ -43,7 +44,7 @@ export default {
         input 
             box-sizing border-box
             width 98%
-            height 80%
+            height 76%
             border-radius .04rem
             text-align center
             color #666666
