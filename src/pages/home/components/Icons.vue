@@ -10,8 +10,8 @@
             <div class="swiper-pagination" slot="pagination"></div>
         </swiper>
         <div class="iconFooter">
-            <span class="left">定位失败</span>
-            <span class="right">必游榜单</span>
+            <span class="left iconfont">&#xe63f; 定位失败</span>
+            <span class="right iconfont">&#xe689; 必游榜单</span>
         </div>
         
     </div>
@@ -75,10 +75,6 @@ export default {
     .homeIcons >>> .swiper-pagination-bullet-active
         background $bgColor
     .homeIcons
-        // overflow hidden
-        // width 100%
-        // height 0
-        // padding-bottom 51%
         border-bottom 1px solid #eaeaea
         .iconList
             display flex
