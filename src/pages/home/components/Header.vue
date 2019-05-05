@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="header-right">
-            <span>城市</span>
+            <span>{{city}}</span>
             <span class="iconfont arrow-icon">&#xe6aa;</span>
             
         </div>
@@ -18,7 +18,7 @@
 </template>
 <script>
 export default {
-    
+    props: ['city']
 }
 </script>
 <style lang="stylus" scoped>

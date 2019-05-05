@@ -4,7 +4,7 @@
             <swiper-slide v-for="(page,index) of pages" :key="index" class="iconList"> 
                 <div v-for="item of page" :key="item.id" class="iconItem">
                      <img :src="item.imgUrl" alt="">
-                     <div>{{item.title}}</div>
+                     <div>{{item.desc}}</div>
                 </div>
             </swiper-slide>
             <div class="swiper-pagination" slot="pagination"></div>
@@ -19,50 +19,65 @@
 <script>
 export default {
     name: 'homeIcons',
+    props: {iconList: Array},
+
     data () {
         return {
             swiperOption: {
                 pagination: '.swiper-pagination'
             },
-            pages: [[
-               {
-                id: '0001',
-                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-                title: '景点门票'
-            },{
-                id: '0002',
-                imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20194/e98eea7ed037b04a5af0250ca8a1abd7.png',
-                title: '少林寺'
-            },{
-                id: '0003',
-                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-                title: '郑州必游'
-            },{
-                id: '0004',
-                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/8246f27355943202.png',
-                title: '郑州方特'
-            },{
-                id: '0005',
-                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/85/77241e9427222b02.png',
-                title: '郑州园博园'
-            },{
-                id: '0006',
-                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/b2/bfbc5d66e0ab5a02.png',
-                title: '冰雪世界'
-            },{
-                id: '0007',
-                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/fa/2548667cb6e902.png',
-                title: '郑州动物园'
-            },{
-                id: '0008',
-                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/e3/67df61427c8e1302.png',
-                title: '实景演出'
-            }, 
-            ],[{
-                id: '0009',
-                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png',
-                title: '海洋馆'
-            },]]
+            // pages: [[
+            //    {
+            //     id: '0001',
+            //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
+            //     title: '景点门票'
+            // },{
+            //     id: '0002',
+            //     imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20194/e98eea7ed037b04a5af0250ca8a1abd7.png',
+            //     title: '少林寺'
+            // },{
+            //     id: '0003',
+            //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
+            //     title: '郑州必游'
+            // },{
+            //     id: '0004',
+            //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/8246f27355943202.png',
+            //     title: '郑州方特'
+            // },{
+            //     id: '0005',
+            //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/85/77241e9427222b02.png',
+            //     title: '郑州园博园'
+            // },{
+            //     id: '0006',
+            //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/b2/bfbc5d66e0ab5a02.png',
+            //     title: '冰雪世界'
+            // },{
+            //     id: '0007',
+            //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/fa/2548667cb6e902.png',
+            //     title: '郑州动物园'
+            // },{
+            //     id: '0008',
+            //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/e3/67df61427c8e1302.png',
+            //     title: '实景演出'
+            // }, 
+            // ],[{
+            //     id: '0009',
+            //     imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png',
+            //     title: '海洋馆'
+            // },]]
+        }
+    },
+    computed: {
+        pages () {
+            const pages = []
+            this.iconList.map((item,index)=>{
+                const page = Math.floor(index / 8)
+                if(!pages[page]){
+                    pages[page] = []
+                }
+                pages[page].push(item)
+            })
+            return pages
         }
     }
 }
