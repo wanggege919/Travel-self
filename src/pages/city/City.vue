@@ -16,13 +16,15 @@ export default {
         Header,
         CityList,
         CityAlphabet,
+
     },
     data () {
         return {
             hotCities: [],
-            cities: {}
+            cities: {},
         }
     },
+   
     created () {
         axios.get('/api/city.json').then((res)=>{
             console.log(res)

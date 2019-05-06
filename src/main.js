@@ -12,7 +12,7 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
 
-
+Vue.prototype.bus = new Vue()
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 fastClick.attach(document.body)
 Vue.config.productionTip = false
