@@ -1,6 +1,6 @@
 <template>
     <div class="city">
-        <Header></Header>
+        <Header :cities = "cities"></Header>
         <CityList :hotCities = "hotCities" :cities = "cities"></CityList>
         <CityAlphabet :cities = "cities"></CityAlphabet>
     </div>
@@ -16,7 +16,6 @@ export default {
         Header,
         CityList,
         CityAlphabet,
-
     },
     data () {
         return {

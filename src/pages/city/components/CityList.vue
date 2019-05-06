@@ -1,5 +1,5 @@
 <template>
-    <div class="city-list wrapper" ref="wrapper">
+    <div class="city-list wrapper" ref="wrapper" >
         <div>
             <div class="area">
                 <div class="title">您的位置</div>
@@ -35,15 +35,17 @@ export default {
     props: {
         hotCities: Array,
         cities: Object,
-        letter: String
+        letter: String,
     },
+    
     mounted () {
         this.scroll = new BScroll(this.$refs.wrapper)
         this.bus.$on('change',(location)=>{
             const element = this.$refs[location][0]
             // console.log(element)
             this.scroll.scrollToElement(element)
-        })   
+        }) 
+        
     }
     
 }
