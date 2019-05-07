@@ -1,19 +1,19 @@
 <template>
     <div class="city">
-        <Header :cities = "cities"></Header>
+        <CityHeader :cities = "cities"></CityHeader>
         <CityList :hotCities = "hotCities" :cities = "cities"></CityList>
         <CityAlphabet :cities = "cities"></CityAlphabet>
     </div>
 </template>
 <script>
-import Header from '@/pages/city/components/Header'
+import CityHeader from '@/pages/city/components/CityHeader'
 import CityList from '@/pages/city/components/CityList'
 import CityAlphabet from '@/pages/city/components/CityAlphabet'
 import axios from 'axios'
 export default {
     name: 'City',
     components: {
-        Header,
+        CityHeader,
         CityList,
         CityAlphabet,
     },
@@ -26,7 +26,6 @@ export default {
    
     created () {
         axios.get('/api/city.json').then((res)=>{
-            console.log(res)
             this.hotCities = res.data.data.hotCities
             this.cities = res.data.data.cities
         })

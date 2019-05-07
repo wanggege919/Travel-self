@@ -42,7 +42,7 @@ export default {
             let location = e.currentTarget.innerText
             this.bus.$emit('change',location)
         },
-        handleTouchStart () {
+        handleTouchStart (e) {
             this.touchStatus = true
         },
         handleTouchMove (e) {

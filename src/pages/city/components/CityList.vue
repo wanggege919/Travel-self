@@ -4,13 +4,17 @@
             <div class="area">
                 <div class="title">您的位置</div>
                 <ul>
-                    <li>北京</li>
+                    <li>{{ this.currentCity }}</li>
                 </ul>
             </div>
             <div class="area">
                 <div class="title">热门城市</div>
                 <ul>
-                    <li v-for="item of hotCities" :key="item.id">
+                    <li
+                    v-for="item of hotCities" 
+                    :key="item.id"
+                    @click="handleCityChange(item.name)"
+                    >
                         {{item.name}}
                     </li>
                     
@@ -19,7 +23,11 @@
         
             <div class="area" v-for="(city,key) of cities" :key="key">
                 <div class="title" :ref="key">{{key}}</div>
-                <div class="list" v-for="item of city" :key="item.id">
+                <div class="list" 
+                v-for="item of city" 
+                :key="item.id"
+                @click="handleCityChange(item.name)"
+                >
                     <div>{{item.name}}</div>
                 </div>
             </div>
@@ -30,14 +38,28 @@
 <script>
 
 import BScroll from 'better-scroll'
+import { mapState, mapMutations } from 'vuex'
 export default {
     name: 'CityList',
     props: {
         hotCities: Array,
         cities: Object,
         letter: String,
+        
     },
-    
+    computed: {
+        ...mapState({
+            currentCity: 'city'//把state中的city属性值映射到该组件计算属性的currentCity上
+        })
+    },
+    methods: {
+        handleCityChange (city) {
+            // this.$store.commit('cityChange',city)
+            this.cityChange(city)
+            this.$router.push('/')
+        },
+        ...mapMutations(['cityChange'])//把mutations中的cityChange方法映射到该组件cityChange方法上
+    },
     mounted () {
         this.scroll = new BScroll(this.$refs.wrapper)
         this.bus.$on('change',(location)=>{
@@ -46,7 +68,7 @@ export default {
             this.scroll.scrollToElement(element)
         }) 
         
-    }
+    },
     
 }
 </script>
@@ -71,7 +93,7 @@ export default {
                 li
                     border 1px solid #ccc
                     text-align center
-                    padding .08rem .5rem
+                    padding .08rem .4rem
                     border-radius .05rem
                     margin-right .1rem
                     margin-bottom .1rem

@@ -11,15 +11,18 @@
         </div>
         <router-link to="/city">
             <div class="header-right">           
-                <span class="city">{{city}}</span>
+                <span class="city">{{this.city}}</span>
                 <span class="iconfont arrow-icon">&#xe6aa;</span>             
             </div>
         </router-link>  
     </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
-    props: ['city']
+    computed: {
+        ...mapState(['city'])
+    }
 }
 </script>
 <style lang="stylus" scoped>
@@ -46,7 +49,8 @@ export default {
             .back-icon
                 font-size .3rem
         .header-right
-            width .88rem
+            min-width .88rem
+            padding .08rem
             text-align center
             color #fff 
             .arrow-icon
