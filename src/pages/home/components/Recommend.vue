@@ -2,14 +2,20 @@
     <div class="homeRecommend">
         <header>猜你喜欢</header>
         <ul class="recommendList">
-            <li class="recommendItem" v-for='item of recommendList' :key='item.id'>
-                <img :src="item.imgUrl" alt="">
-                <div class="item-text">
-                    <p class="item-title">{{item.title}}</p>
-                    <p class="item-desc">{{item.desc}}</p>
-                    <button class="item-button">查看详情</button>
-                </div>
-            </li>
+                <router-link 
+                class="recommendItem" 
+                v-for='item of recommendList' 
+                :key='item.id'
+                tag="li"
+                :to='"/detail/" + item.id'
+                >
+                    <img :src="item.imgUrl" alt="">
+                    <div class="item-text">
+                        <p class="item-title">{{item.title}}</p>
+                        <p class="item-desc">{{item.desc}}</p>
+                        <button class="item-button">查看详情</button>
+                    </div>
+                </router-link>    
         </ul>
     </div>    
 </template>
