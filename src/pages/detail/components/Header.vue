@@ -31,17 +31,18 @@ export default {
             const top = document.documentElement.scrollTop
             if(top >= 45){
                 this.headerShow = true
-                const opacity = top / 120
-                this.styleOpacity = {opacity: opacity}
+                let opacity = top / 120
+                opacity = opacity > 1 ? 1 : opacity
+                this.styleOpacity = {opacity}
             }else{
                 this.headerShow = false
             }
         }
     },
-    activated () {
+    mounted () {
         window.addEventListener('scroll',this.handleScroll)
     },
-    deactivated () {
+    unmounted () {
         window.removeEventListener('scroll',this.handleScroll)
     }
 

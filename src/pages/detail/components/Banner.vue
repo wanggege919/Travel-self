@@ -2,14 +2,17 @@
     <div>
         <div class="banner" @click="handleBannerClick">
             <img class="banner-img" 
-            src="//img1.qunarzz.com/sight/p0/1709/e9/e9b7ae23f567806ea3.img.jpg_600x330_339bdee5.jpg" alt="">
+            :src="this.detailData.bannerImg" alt="">
             <div class="banner-info">
-                <p class="banner-number"><span class="iconfont">&#xe658;</span>8</p>
-                <p class="banner-title">少林寺（AAAAA景区）</p>
+                <p class="banner-number">
+                    <span class="iconfont">&#xe658;</span>
+                    {{this.detailData.gallaryImgs.length}}
+                </p>
+                <p class="banner-title">{{this.detailData.sightName}}</p>
             </div>
         </div>
         <CommonGallary 
-        :imgs = 'imgs' 
+        :imgs = 'this.detailData.gallaryImgs' 
         v-show="showGallary"
         @close="close"
         ></CommonGallary>
@@ -20,12 +23,13 @@
 import CommonGallary from 'common/gallary/Gallary'
 export default {
     name: 'DetailBanner',
+    props: {
+        detailData: Object
+    },
     data () {
         return {
             showGallary: false,
-            imgs: ['http://img1.qunarzz.com/sight/p0/1709/e9/e9b7ae23f567806ea3.img.jpg_r_800x800_07570307.jpg',
-                'http://img1.qunarzz.com/sight/p0/1709/27/2779d093cfdbff30a3.img.jpg_r_800x800_196c6751.jpg',
-                'http://img1.qunarzz.com/sight/p0/1709/8c/8c90d360e818ed38a3.img.jpg_r_800x800_bcee8771.jpg',]
+           
         }
     },
     components: {

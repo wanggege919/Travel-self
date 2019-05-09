@@ -1,8 +1,8 @@
 <template>
     <div class="detail">
-        <detail-banner></detail-banner>
+        <detail-banner :detailData = "detailData"></detail-banner>
         <DetailHeader></DetailHeader>
-        <DetailList :list = 'list'></DetailList>
+        <DetailList :list = "list"></DetailList>
         <div class="content"></div>
     </div>
 </template>
@@ -10,8 +10,9 @@
 import DetailBanner from './components/Banner'
 import DetailHeader from './components/Header'
 import DetailList from './components/List'
+import axios from 'axios'
 export default {
-    name: 'Banner',
+    name: 'Detail',
     components: {
         DetailBanner,
         DetailHeader,
@@ -19,25 +20,31 @@ export default {
     },
     data () {
         return {
-            list: [{
-                title: '成人票',
-                children: [{
-                    title: '成人三馆联票',
-                    children: [{
-                        title: '成人三馆联票 - 清明上河园'
-                    }]
-                },{
-                    title: '成人五馆联票'
-                },]
-            },{
-                title: '学生票'
-            },{
-                title: '儿童票'
-            },{
-                title: '特惠票'
-            },]
+            list: [],
+            detailData: {}
         }
     },
+    methods: {
+        getInfo () {
+            axios.get('/api/detail.json',{
+                params: {
+                    id: this.$route.params.id
+                }
+            })
+            .then(this.getInfocc)
+        },
+        getInfocc (res) {
+            res = res.data
+            if(res.ret && res.data){
+                this.detailData = res.data
+                this.list = res.data.categoryList
+            }
+            
+        }
+    },
+    created () {
+        this.getInfo()
+    }
 }
 </script>
 <style lang="stylus" scoped>
