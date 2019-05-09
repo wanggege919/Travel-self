@@ -27,6 +27,7 @@ export default {
     },
     methods: {
         handleScroll () {
+            console.log('scroll')
             const top = document.documentElement.scrollTop
             if(top >= 45){
                 this.headerShow = true
@@ -39,7 +40,11 @@ export default {
     },
     activated () {
         window.addEventListener('scroll',this.handleScroll)
+    },
+    deactivated () {
+        window.removeEventListener('scroll',this.handleScroll)
     }
+
 }
 </script>
 <style lang="stylus" scoped>

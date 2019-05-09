@@ -62,6 +62,7 @@ export default {
         flex-direction column
         justify-content center
         align-items center
+        z-index 99
         .wrapper
             height 0
             width 100%

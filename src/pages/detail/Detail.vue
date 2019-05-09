@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="detail">
         <detail-banner></detail-banner>
         <DetailHeader></DetailHeader>
         <div class="content"></div>
@@ -13,7 +13,7 @@ export default {
     components: {
         DetailBanner,
         DetailHeader
-    }
+    },
 }
 </script>
 <style lang="stylus" scoped>
